@@ -5,6 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madame Masako: Personal Elegance Assistant</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .mySlides img {
+            width: 100%;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev {
+            left: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+            background: #ddd;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,12 +87,33 @@
         <div class="container">
             <h2>Welcome to Elegance & Style by Madame Masako</h2>
             <p>Your personal style assistant, offering personalized fashion, wardrobe planning and elegance advice for all occasions</p>
+
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+                <div class="mySlides">
+                    <img src="CastagnolaD1.jpeg" alt="Image 1">
+                </div>
+                <div class="mySlides">
+                    <img src="Tatami3.jpeg" alt="Image 2">
+                </div>
+                <div class="mySlides">
+                    <img src="Milano1.jpeg" alt="Image 3">
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
         </div>
     </section>
 
     <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
+            <img src="Chur1.jpeg" alt="About Image" style="width:100%; max-width:600px; display:block; margin:auto;">
             <p>Hello! I'm Masako, a professional style consultant with over 30 years of experience. I help individuals enhance their personal style and boost their confidence through tailored fashion advice.</p>
         </div>
     </section>
@@ -39,6 +121,7 @@
     <section id="services" class="services">
         <div class="container">
             <h2>Services</h2>
+            <img src="Milano5.jpeg" alt="Services Image" style="width:100%; max-width:600px; display:block; margin:auto;">
             <ul>
                 <li><h3>In-Person Consultation</h3><p>Meet with me in person for a comprehensive style assessment and personalized shopping session.</p></li>
                 <li><h3>Virtual Consultation</h3><p>Schedule a video call for style advice and wardrobe planning from the comfort of your home.</p></li>
@@ -50,6 +133,7 @@
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2>Testimonials</h2>
+            <img src="Laax2.png" alt="Testimonials Image" style="width:100%; max-width:600px; display:block; margin:auto;">
             <blockquote>"Masako transformed my wardrobe and boosted my confidence! Highly recommend."</blockquote>
             <cite>- Happy Client</cite>
             <blockquote>"The virtual consultation was convenient and incredibly helpful. My style has never been better."</blockquote>
@@ -60,6 +144,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact</h2>
+            <img src="Castagnola1.jpeg" alt="Contact Image" style="width:100%; max-width:600px; display:block; margin:auto;">
             <form action="submit_form.php" method="post">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
@@ -77,5 +162,34 @@
             <p>&copy; 2024 Elegance & Style by Madame Masako. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+    </script>
 </body>
 </html>
