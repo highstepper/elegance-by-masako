@@ -13,7 +13,8 @@ body {
 
 header {
     background: #333;
-    color: #fff;
+    background-color: LightGoldenrodYellow;
+    color: Black;
     padding-top: 30px;
     min-height: 70px;
     border-bottom: #77aaff 3px solid;
